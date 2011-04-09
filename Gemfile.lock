@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ryanb/private_pub.git
+  revision: e1947435ceaaabde6ede8d13bf12a11a921bf761
+  specs:
+    private_pub (0.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -107,7 +113,6 @@ GEM
       oa-openid (= 0.2.1)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
-    private_pub (0.2.0)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -156,6 +161,6 @@ DEPENDENCIES
   devise
   faye
   omniauth
-  private_pub
+  private_pub!
   rails (= 3.0.6)
   sqlite3
