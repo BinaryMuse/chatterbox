@@ -1,0 +1,6 @@
+el = $("<p>").html(
+  "<b><%= escape_javascript @chat[:user] %></b>: <%= escape_javascript @chat[:message] %>"
+);
+$("#chatlog").append(el);
+$("#chatinput input[type=text]").val("");
+$("#chatlog").attr({ scrollTop: $("#chatlog").attr("scrollHeight") });

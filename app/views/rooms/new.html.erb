@@ -1,0 +1,15 @@
+<h1>Create a new room</h1>
+
+<%= form_for @room do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %> (leave blank for a random name)
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %> (leave blank for no password)
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

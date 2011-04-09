@@ -1,0 +1,11 @@
+<h1>Chat Room <%= @room.name %></h1>
+<p>Invite others to this room with the following URL:
+  <%= link_to room_url(@room), room_url(@room) %></p>
+
+<div id="chatlog"></div>
+<div id="chatinput">
+<%= form_for :chat, :url => chat_room_path(@room), :remote => true do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit "Send" %>
+<% end %>
+</div>

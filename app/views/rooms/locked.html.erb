@@ -1,0 +1,14 @@
+<h1>Locked Room</h1>
+
+<p>This room has been locked with a password. To access it, please enter the
+  password in the box below.</p>
+
+<%= form_for :key, :url => unlock_room_path(@room), :method => :post do |f| %>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.submit "Unlock" %>
+  </p>
+<% end %>
