@@ -38,7 +38,7 @@ en:
       unlocked: 'Your account was successfully unlocked. You are now signed in.'
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'
-      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      failure: 'Could not authorize you from %{kind} because "%{reason}"'
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'
