@@ -38,6 +38,7 @@ GEM
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    configuration (1.2.0)
     daemons (1.1.2)
     devise (1.2.1)
       bcrypt-ruby (~> 2.1.2)
@@ -61,8 +62,14 @@ GEM
       json (>= 1.0)
       rack (>= 1.0)
       thin (>= 1.2)
+    heroku (1.20.1)
+      launchy (~> 0.3.2)
+      rest-client (>= 1.4.0, < 1.7.0)
     i18n (0.5.0)
     json (1.5.1)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -160,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   devise
   faye
+  heroku
   omniauth
   private_pub!
   rails (= 3.0.6)
