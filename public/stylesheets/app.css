@@ -1,3 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+div#session {
+  margin-bottom: 10px;
+}
+
+#flash .alert {
+  border: 3px solid #FBC2C4;
+  background: #FBE3E4;
+  color: #8A1F11;
+}
+
+#flash .notice {
+  border: 3px solid #92CAE4;
+  background: #D5EDF8;
+  color: #205791;
+}
+
 div#chatlog {
   border: 1px solid black;
   width: 800px;
