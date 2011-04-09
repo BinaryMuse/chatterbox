@@ -1,0 +1,13 @@
+<h1>Join a room</h1>
+
+<p>Please enter the name of the room you wish to join:</p>
+<%= form_for :room, :url => search_rooms_path do |f| %>
+  <p>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Join" %>
+  </p>
+<% end %>
+
+<p><%= link_to "I'd rather create my own room.", new_room_path %></p>

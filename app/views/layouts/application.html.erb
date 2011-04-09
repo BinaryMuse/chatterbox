@@ -4,27 +4,30 @@
   <title>Chatterbox</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <% if content_for?(:extra_js) %>
+    <%= javascript_include_tag content_for(:extra_js) %>
+  <% end %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
 <div id="session">
-<% unless signed_in? %>
-  You are not signed in.
-  <%= link_to "Sign In", new_user_session_path %> or
-  <%= link_to "Sign Up", new_user_registration_path %>
-  (or <%= link_to "via Facebook", user_omniauth_authorize_path(:facebook) %>)
-<% else %>
-  You are signed in as
-  <%= current_user.username || current_user.email %>.
-  <%= link_to "Sign Out", destroy_user_session_path %>
-<% end %>
+  <% unless signed_in? %>
+    You are not signed in.
+    <%= link_to "Sign In", new_user_session_path %> or
+    <%= link_to "Sign Up", new_user_registration_path %>
+    (or <%= link_to "via Facebook", user_omniauth_authorize_path(:facebook) %>)
+  <% else %>
+    You are signed in as
+    <%= current_user.username || current_user.email %>.
+    <%= link_to "Sign Out", destroy_user_session_path %>
+  <% end %>
 </div>
 
 <div id="flash">
-<% flash.each do |key, value| %>
-  <%= content_tag :div, value, :class => "flash #{key}" %>
-<% end %>
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, :class => "flash #{key}" %>
+  <% end %>
 </div>
 
 <%= yield %>

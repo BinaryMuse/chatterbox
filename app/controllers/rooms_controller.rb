@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   include RoomsHelper
   before_filter :authenticate_user!, :except => [:index]
+  before_filter :verify_room_permissions, :only => [:show, :chat, :leave]
 
   def index
   end
@@ -20,11 +21,17 @@ class RoomsController < ApplicationController
     end
   end
 
+  def join
+  end
+
+  def search
+    name = params[:room][:name]
+    @room = Room.find_by_name(name)
+    redirect_to room_path(@room)
+  end
+
   def show
-    @room = Room.find(params[:id])
-    unless @room.password.blank? || can_access_room(@room)
-      render 'rooms/locked'
-    end
+    publish_to "/rooms/#{@room.id}/events", :joined => (current_user.username || current_user.email)
   end
 
   def unlock
@@ -34,23 +41,33 @@ class RoomsController < ApplicationController
       redirect_to room_path(@room)
     else
       flash[:alert] = "That password was not correct."
-      render 'rooms/locked'
+      render 'locked'
     end
   end
 
   def chat
-    @room = Room.find(params[:id])
-    unless @room.password.blank? || can_access_room(@room)
-      respond_to do |format|
-        format.js { render 'rooms/locked' }
-      end
-    else
-      @chat = params[:chat]
-      @chat[:user] = current_user.username || current_user.email
-      respond_to do |format|
-        format.js
+    @chat = params[:chat]
+    @chat[:user] = current_user.username || current_user.email
+    publish_to "/rooms/#{@room.id}/messages", @chat
+    render :nothing => true
+  end
+
+  def leave
+    publish_to "/rooms/#{@room.id}/events", :parted => (current_user.username || current_user.email)
+    render :nothing => true
+  end
+
+  private
+
+    def verify_room_permissions
+      @room = Room.find(params[:id])
+      unless @room.password.blank? || can_access_room(@room)
+        respond_to do |format|
+          format.html { render 'locked' }
+          format.js   { render 'locked' }
+        end
+        return
       end
     end
-  end
 
 end

@@ -1,11 +1,27 @@
-<h1>Chat Room <%= @room.name %></h1>
+<%= content_for(:extra_js, "chatterbox.js") %>
+
+<%= subscribe_to "/rooms/#{@room.id}/messages" %>
+<%= subscribe_to "/rooms/#{@room.id}/events" %>
+
+<%= content_tag :h1, "Chat Room #{@room.name}", :class => "room_id", "data-id" => @room.id %>
+
 <p>Invite others to this room with the following URL:
   <%= link_to room_url(@room), room_url(@room) %></p>
 
 <div id="chatlog"></div>
 <div id="chatinput">
 <%= form_for :chat, :url => chat_room_path(@room), :remote => true do |f| %>
-  <%= f.text_field :message %>
-  <%= f.submit "Send" %>
+  <%= f.text_field :message, :disabled => true, :autocomplete => "off" %>
+  <%= f.submit "Send", :disabled => true %>
 <% end %>
 </div>
+
+<script type="text/javascript">
+  $(window).bind('beforeunload', function() {
+    $.ajax({
+      url: "<%= escape_javascript leave_room_path(@room) %>",
+      async: false,
+      type: "POST"
+    });
+  });
+</script>

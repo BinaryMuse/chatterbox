@@ -34,6 +34,7 @@ module Chatterbox
     config.action_view.javascript_expansions[:defaults] = %w(
       jquery-1.5.2.min
       jquery-ui-1.8.11.min
+      private_pub
       rails
     )
 

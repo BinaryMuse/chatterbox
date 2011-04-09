@@ -4,3 +4,4 @@ log/*.log
 tmp/
 vendor/ruby/*
 config/initializers/0_development.rb
+config/private_pub.yml
