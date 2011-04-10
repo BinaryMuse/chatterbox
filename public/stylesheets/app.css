@@ -9,9 +9,18 @@ body {
 }
 
 div#main {
-  padding-top: 5px;
+  padding: 10px;
   width: 820px;
   margin: 0 auto;
+
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: #000;
+
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.6);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
 }
 
 div#session {
@@ -41,11 +50,11 @@ div#chatlog {
   width: 800px;
   height: 500px;
   overflow-y: scroll;
-  background: #fff;
-  filter:alpha(opacity=60);
-  -moz-opacity:0.6;
-  -khtml-opacity: 0.6;
-  opacity: 0.6;
+
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.35);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cffffff, endColorstr=#4cffffff);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cffffff, endColorstr=#4cffffff)";
 }
 
 div#chatlog p {
