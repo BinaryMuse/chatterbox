@@ -1,25 +1,23 @@
-$(function(){
-  $("#chatinput form").live('ajax:complete.rails', function(event) {
-    $(this).children("input[type=text]").val("");
-  });
+Chatterbox = {
+  user_joined: function(user) {
+    Chatterbox.append_text("<b>" + user + " has joined the room.</b>");
+  },
 
-  var room_id = $(".room_id").data("id");
+  user_parted: function(user) {
+    Chatterbox.append_text("<b>" + user + " has left the room.</b>");
+  },
 
-  PrivatePub.subscribe("/rooms/" + room_id + "/messages", function(data, channel) {
-    user    = data.user;
-    message = data.message;
-    Chatterbox.user_chatted(user, message);
-  });
+  user_chatted: function(user, message) {
+    Chatterbox.append_text("<b>" + user + "</b>: " + message);
+  },
 
-  PrivatePub.subscribe("/rooms/" + room_id + "/events", function(data, channel) {
-    if(data.joined) {
-      Chatterbox.user_joined(data.joined);
-    }
-    if(data.parted) {
-      Chatterbox.user_parted(data.parted);
-    }
-  });
+  append_text: function(text) {
+    el = $("<p>").html(text);
+    $("#chatlog").append(el);
+    Chatterbox.scroll_down();
+  },
 
-  $("#chat_message, #chat_submit").removeAttr('disabled');
-  $("#chat_message").focus();
-});
+  scroll_down: function() {
+    $("#chatlog").attr({ scrollTop: $("#chatlog").attr("scrollHeight") });
+  }
+};

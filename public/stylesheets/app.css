@@ -9,7 +9,7 @@ body {
 }
 
 div#main {
-  padding: 10px;
+  padding: 10px 10px 25px 10px;
   width: 820px;
   margin: 0 auto;
 
@@ -56,22 +56,27 @@ span.field-error input {
 .action_button {
   display: inline-block;
   width: 350px;
-  border: 1px solid black;
+  border: 2px solid black;
   font-size: 24pt;
   padding: 15px;
   margin: 10px;
-  color: white;
-  background-color: blue;
+  background-color: #acc4f9;
+  color: #000;
   text-decoration: none;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 
+.action_button:hover {
+  color: white;
+  background-color: #006caa;
+}
+
 div#chatlog {
   border: 1px solid black;
   width: 800px;
-  height: 500px;
+  height: 450px;
   overflow-y: scroll;
 
   background: rgb(255, 255, 255);
@@ -87,5 +92,5 @@ div#chatlog p {
 
 div#chatinput input[type=text] {
   width: 750px;
-  margin-bottom: 50px;
+  font-size: 14pt;
 }

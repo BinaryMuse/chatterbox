@@ -35,6 +35,7 @@ module Chatterbox
       jquery-1.5.2.min
       jquery-ui-1.8.11.min
       private_pub
+      chatterbox
       rails
     )
 

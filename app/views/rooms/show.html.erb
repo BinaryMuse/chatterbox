@@ -1,4 +1,4 @@
-<%= content_for(:extra_js, "chatterbox.js") %>
+<%= content_for(:extra_js, "room") %>
 
 <%= subscribe_to "/rooms/#{@room.id}/messages" %>
 <%= subscribe_to "/rooms/#{@room.id}/events" %>
@@ -16,6 +16,11 @@
   <%= f.text_field :message, :disabled => true, :autocomplete => "off" %>
   <%= f.submit "Send", :disabled => true %>
 <% end %>
+</div>
+
+<div id="sizes">
+  <%= link_to "Bigger", "#", :id => "bigger" %> |
+  <%= link_to "Smaller", "#", :id => "smaller" %>
 </div>
 
 <script type="text/javascript">
