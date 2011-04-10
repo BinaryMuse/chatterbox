@@ -25,9 +25,12 @@ class RoomsController < ApplicationController
   end
 
   def search
-    name = params[:room][:name]
-    @room = Room.find_by_name(name)
-    redirect_to room_path(@room)
+    @room = Room.find_by_name(params[:room][:name])
+    if @room
+      redirect_to room_path(@room)
+    else
+      redirect_to join_rooms_path, :alert => "Couldn't locate a room with that name."
+    end
   end
 
   def show
