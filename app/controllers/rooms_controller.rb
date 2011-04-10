@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
   end
 
   def unlock
-    @room = Room.find(params[:id])
+    @room = Room.find_by_name(params[:id])
     if @room.has_password? params[:key][:password]
       allow_room_access(@room)
       redirect_to room_path(@room)
