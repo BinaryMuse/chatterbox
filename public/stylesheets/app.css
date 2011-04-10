@@ -13,7 +13,7 @@ div#main {
   width: 820px;
   margin: 0 auto;
 
-  border-width: 0 1px;
+  border-width: 0 1px 1px 1px;
   border-style: solid;
   border-color: #000;
 
@@ -43,6 +43,29 @@ div#session {
   border: 3px solid #92CAE4;
   background: #D5EDF8;
   color: #205791;
+}
+
+span.field-error input {
+  border: 2px solid red;
+}
+
+.action_buttons {
+  text-align: center;
+}
+
+.action_button {
+  display: inline-block;
+  width: 350px;
+  border: 1px solid black;
+  font-size: 24pt;
+  padding: 15px;
+  margin: 10px;
+  color: white;
+  background-color: blue;
+  text-decoration: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 div#chatlog {

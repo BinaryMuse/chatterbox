@@ -2,5 +2,8 @@
 
 <p>Welcome to Chatterbox, where it's easy to set up public and private chat
   rooms for you and your friends or colleagues.</p>
-<p><%= link_to "Create a room", new_room_path, :id => :new_room %> or
-  <%= link_to "join an existing room", join_rooms_path, :id => :join_room %>.</p>
+
+<p class="action_buttons">
+  <%= content_tag :span, link_to("Create a Room", new_room_path, :class => "action_button") %>
+  <%= content_tag :span, link_to("Join an Existing Room", join_rooms_path, :class => "action_button") %>
+</p>
