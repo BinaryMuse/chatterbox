@@ -5,7 +5,7 @@ Chatterbox is a small multi-room chat website built using Ruby on Rails and [Fay
 
  * [`app/controllers/rooms_controller.rb`](https://github.com/BinaryMuse/chatterbox/blob/master/app/controllers/rooms_controller.rb)
  * [`public/javascripts/chatterbox.js`](https://github.com/BinaryMuse/chatterbox/blob/master/public/javascripts/chatterbox.js)
- * [`public/javascripts/application.js`](https://github.com/BinaryMuse/chatterbox/blob/master/public/javascripts/application.js)
+ * [`public/javascripts/room.js`](https://github.com/BinaryMuse/chatterbox/blob/master/public/javascripts/room.js)
 
 Expect some improvements as time permits. Specifically:
 
