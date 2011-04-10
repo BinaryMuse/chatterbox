@@ -8,6 +8,13 @@ body {
   padding: 0;
 }
 
+img#fork {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  border: none;
+}
+
 div#main {
   padding: 10px 10px 25px 10px;
   width: 820px;
