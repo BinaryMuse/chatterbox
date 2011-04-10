@@ -1,9 +1,27 @@
 body {
   font-family: Arial, sans-serif;
+  background-image: url('/images/chatterbox-bg.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+div#main {
+  padding-top: 5px;
+  width: 820px;
+  margin: 0 auto;
 }
 
 div#session {
   margin-bottom: 10px;
+  text-align: right;
+  float: right;
+}
+
+#flash {
+  clear: both;
 }
 
 #flash .alert {
@@ -23,6 +41,11 @@ div#chatlog {
   width: 800px;
   height: 500px;
   overflow-y: scroll;
+  background: #fff;
+  filter:alpha(opacity=60);
+  -moz-opacity:0.6;
+  -khtml-opacity: 0.6;
+  opacity: 0.6;
 }
 
 div#chatlog p {
@@ -32,4 +55,5 @@ div#chatlog p {
 
 div#chatinput input[type=text] {
   width: 750px;
+  margin-bottom: 50px;
 }

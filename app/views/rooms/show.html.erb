@@ -3,7 +3,9 @@
 <%= subscribe_to "/rooms/#{@room.id}/messages" %>
 <%= subscribe_to "/rooms/#{@room.id}/events" %>
 
-<%= content_tag :h1, "Chat Room #{@room.name}", :class => "room_id", "data-id" => @room.id %>
+<%= content_tag :h1, :class => "room_id", "data-id" => @room.id do %>
+  Chat Room: <%= link_to @room.name, room_path(@room) %>
+<% end %>
 
 <p>Invite others to this room with the following URL:
   <%= link_to room_url(@room), room_url(@room) %></p>
