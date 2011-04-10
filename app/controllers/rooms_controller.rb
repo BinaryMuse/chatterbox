@@ -63,7 +63,7 @@ class RoomsController < ApplicationController
   private
 
     def verify_room_permissions
-      @room = Room.find(params[:id])
+      @room = Room.find_by_name(params[:id])
       unless @room.password.blank? || can_access_room(@room)
         respond_to do |format|
           format.html { render 'locked' }

@@ -8,6 +8,10 @@ class Room < ActiveRecord::Base
     encrypt(password) == self.password
   end
 
+  def to_param
+    name
+  end
+
   private
 
     def generate_name
