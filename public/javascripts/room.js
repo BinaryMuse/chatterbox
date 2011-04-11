@@ -43,4 +43,14 @@ $(function(){
         $("#chat_message").focus();
       }
   });
+
+  $(window).bind("blur", function() {
+    Chatterbox.set_focused(false);
+    $("#chatlog .last_chat_log").removeClass("last_chat_log");
+    $("#chatlog p:last").addClass("last_chat_log");
+  });
+
+  $(window).bind("focus", function() {
+    Chatterbox.set_focused(true);
+  });
 });

@@ -101,3 +101,7 @@ div#chatinput input[type=text] {
   width: 750px;
   font-size: 14pt;
 }
+
+.last_chat_log {
+  border-bottom: 1px solid blue;
+}
