@@ -5,15 +5,15 @@ $(function(){
 
   var room_id   = $(".room_id").data("id");
   var room_name = $(".room_id").data("name");
-  var room_hash = $(".room_id").data("hash");
+  var room_sha1 = $(".room_id").data("sha1");
 
-  PrivatePub.subscribe("/rooms/" + room_hash + "/messages", function(data, channel) {
+  PrivatePub.subscribe("/rooms/" + room_sha1 + "/messages", function(data, channel) {
     user    = data.user;
     message = data.message;
     Chatterbox.user_chatted(user, message);
   });
 
-  PrivatePub.subscribe("/rooms/" + room_hash + "/events", function(data, channel) {
+  PrivatePub.subscribe("/rooms/" + room_sha1 + "/events", function(data, channel) {
     if(data.joined) {
       Chatterbox.user_joined(data.joined);
     }
@@ -36,7 +36,7 @@ $(function(){
   });
 
   $.ajax({
-      url: "/rooms/" + room_hash + "/joined",
+      url: "/rooms/" + room_sha1 + "/joined",
       type: "POST",
       success: function(data, status, xhr) {
         $("#chat_message, #chat_submit").removeAttr('disabled');

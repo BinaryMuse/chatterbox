@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110411031507) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "hash"
+    t.string   "sha1"
   end
 
   create_table "sessions", :force => true do |t|

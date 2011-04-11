@@ -4,14 +4,14 @@ class Room < ActiveRecord::Base
   validates_uniqueness_of :name, :case_sensitive => true
 
   before_validation :generate_name, :encrypt_password
-  before_save       :generate_hash
+  before_save       :generate_sha1
 
   def has_password?(password)
     encrypt(password) == self.password
   end
 
   def to_param
-    hash
+    sha1
   end
 
   private
@@ -20,8 +20,8 @@ class Room < ActiveRecord::Base
       self.name = ActiveSupport::SecureRandom.hex(6) if name.blank?
     end
 
-    def generate_hash
-      self.hash = Digest::SHA1.hexdigest(name)
+    def generate_sha1
+      self.sha1 = Digest::SHA1.hexdigest(name)
     end
 
     def encrypt_password

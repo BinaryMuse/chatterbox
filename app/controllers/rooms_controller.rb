@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
   end
 
   def unlock
-    @room = Room.find_by_hash(params[:id])
+    @room = Room.find_by_sha1(params[:id])
     if @room.has_password? params[:key][:password]
       allow_room_access(@room)
       redirect_to room_path(@room)
@@ -50,24 +50,24 @@ class RoomsController < ApplicationController
   def chat
     @chat = params[:chat]
     @chat[:user] = current_user.username || current_user.email
-    publish_to "/rooms/#{@room.hash}/messages", @chat
+    publish_to "/rooms/#{@room.sha1}/messages", @chat
     render :nothing => true
   end
 
   def joined
-    publish_to "/rooms/#{@room.hash}/events", :joined => (current_user.username || current_user.email)
+    publish_to "/rooms/#{@room.sha1}/events", :joined => (current_user.username || current_user.email)
     render :text => "success"
   end
 
   def parted
-    publish_to "/rooms/#{@room.hash}/events", :parted => (current_user.username || current_user.email)
+    publish_to "/rooms/#{@room.sha1}/events", :parted => (current_user.username || current_user.email)
     render :nothing => true
   end
 
   private
 
     def verify_room_permissions
-      @room = Room.find_by_hash!(params[:id])
+      @room = Room.find_by_sha1!(params[:id])
       unless @room.password.blank? || can_access_room(@room)
         respond_to do |format|
           format.html { render 'locked' }
