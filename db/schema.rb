@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110409071441) do
+ActiveRecord::Schema.define(:version => 20110411031507) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hash"
   end
 
   create_table "sessions", :force => true do |t|

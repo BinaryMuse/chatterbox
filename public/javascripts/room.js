@@ -3,15 +3,17 @@ $(function(){
     $(this).children("input[type=text]").val("");
   });
 
-  var room_id = $(".room_id").data("id");
+  var room_id   = $(".room_id").data("id");
+  var room_name = $(".room_id").data("name");
+  var room_hash = $(".room_id").data("hash");
 
-  PrivatePub.subscribe("/rooms/" + room_id + "/messages", function(data, channel) {
+  PrivatePub.subscribe("/rooms/" + room_hash + "/messages", function(data, channel) {
     user    = data.user;
     message = data.message;
     Chatterbox.user_chatted(user, message);
   });
 
-  PrivatePub.subscribe("/rooms/" + room_id + "/events", function(data, channel) {
+  PrivatePub.subscribe("/rooms/" + room_hash + "/events", function(data, channel) {
     if(data.joined) {
       Chatterbox.user_joined(data.joined);
     }
@@ -33,6 +35,12 @@ $(function(){
     Chatterbox.scroll_down();
   });
 
-  $("#chat_message, #chat_submit").removeAttr('disabled');
-  $("#chat_message").focus();
+  $.ajax({
+      url: "/rooms/" + room_hash + "/joined",
+      type: "POST",
+      success: function(data, status, xhr) {
+        $("#chat_message, #chat_submit").removeAttr('disabled');
+        $("#chat_message").focus();
+      }
+  });
 });

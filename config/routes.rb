@@ -5,7 +5,8 @@ Chatterbox::Application.routes.draw do
     post :search, :on => :collection
     post :unlock, :on => :member
     post :chat,   :on => :member
-    post :leave,  :on => :member
+    post :joined, :on => :member
+    post :parted, :on => :member
   end
   root :to => "rooms#index"
 end
