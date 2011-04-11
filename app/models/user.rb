@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me
 
+  def password_required?
+    new_record?
+  end
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource = nil)
     data = access_token['extra']['user_hash']
     if user = User.find_by_email(data["email"])

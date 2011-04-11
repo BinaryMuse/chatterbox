@@ -1,5 +1,5 @@
 Chatterbox::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :rooms do
     get  :join,   :on => :collection
     post :search, :on => :collection
