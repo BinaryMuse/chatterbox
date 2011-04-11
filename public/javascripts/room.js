@@ -1,5 +1,5 @@
 $(function(){
-  $("#chatinput form").live('ajax:complete.rails', function(event) {
+  $("#chatinput form").live('ajax:beforeSend.rails', function(event) {
     $(this).children("input[type=text]").val("");
   });
 
