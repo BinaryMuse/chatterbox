@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   include RoomsHelper
+  include ActionView::Helpers::TagHelper
   before_filter :authenticate_user!, :except => [:index]
   before_filter :verify_room_permissions, :only => [:show, :chat, :leave, :joined, :parted]
 
@@ -49,6 +50,7 @@ class RoomsController < ApplicationController
 
   def chat
     @chat = params[:chat]
+    @chat[:message] = escape_once @chat[:message]
     @chat[:user] = current_user.username || current_user.email
     publish_to "/rooms/#{@room.sha1}/messages", @chat
     render :nothing => true
