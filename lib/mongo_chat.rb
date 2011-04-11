@@ -7,17 +7,17 @@ module MongoChat
       @user = user
       @pass = pass
 
-      @connection = Mongo::Connection.new(@host, @port).db(@db)
-      @connection.authenticate(@user, @pass)
+      @db = Mongo::Connection.new(@host, @port).db(@db)
+      @db.authenticate(@user, @pass)
     end
 
     def reconnect
-      @connection.reconnect
+      @db.connection.reconnect
     end
 
     def chat_logs
       begin
-        @logs ||= @connection.collection("chatlogs")
+        @logs ||= @db.collection("chatlogs")
       rescue Mongo::ConnectionFailure
         MongoChat.reconnect
         retry
