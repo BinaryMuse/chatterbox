@@ -1,0 +1,5 @@
+<% if chat[:message] %>
+  <p><b><%= chat[:username] %></b>: <%= chat[:message] %></p>
+<% elsif chat[:event] %>
+  <%= render :partial => "event", :locals => { :chat => chat } %>
+<% end %>

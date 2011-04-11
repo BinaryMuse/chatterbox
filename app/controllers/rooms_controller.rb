@@ -53,16 +53,19 @@ class RoomsController < ApplicationController
     @chat[:message] = escape_once @chat[:message]
     @chat[:user] = current_user.username || current_user.email
     publish_to "/rooms/#{@room.sha1}/messages", @chat
+    @room.log_message current_user, @chat[:message]
     render :nothing => true
   end
 
   def joined
     publish_to "/rooms/#{@room.sha1}/events", :joined => (current_user.username || current_user.email)
+    @room.log_event current_user, :joined
     render :text => "success"
   end
 
   def parted
     publish_to "/rooms/#{@room.sha1}/events", :parted => (current_user.username || current_user.email)
+    @room.log_event current_user, :parted
     render :nothing => true
   end
 

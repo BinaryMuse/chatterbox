@@ -1,0 +1,6 @@
+<% case chat[:event]
+   when "joined" %>
+  <p><b><%= chat[:username] %> has joined the room.</b></p>
+<% when "parted" %>
+  <p><b><%= chat[:username] %> has left the room.</b></p>
+<% end %>
