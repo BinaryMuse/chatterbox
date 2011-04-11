@@ -12,9 +12,8 @@
 </head>
 <body>
 
-
 <%= link_to image_tag("forkme_black.png", :alt => "Fork Me on GitHub", :id => "fork"),
-  "http://github.com/BinaryMuse/chatterbox/" %>
+  "http://github.com/BinaryMuse/chatterbox/", :target => :_blank %>
 
 <div id="main">
   <div id="session">
@@ -30,6 +29,8 @@
     <% end %>
   </div>
 
+  <%= link_to image_tag("chatterbox-logo.png", :alt => "Chatterbox"), root_path %>
+
   <% if flash.any? %>
   <div id="flash">
     <% flash.each do |key, value| %>
@@ -37,8 +38,6 @@
     <% end %>
   </div>
   <% end %>
-
-  <%= link_to image_tag("chatterbox-logo.png", :alt => "Chatterbox"), root_path %>
 
   <%= yield %>
 </div>
