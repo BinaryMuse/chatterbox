@@ -14,7 +14,7 @@ Chatterbox has three major parts:
 
 ### The Rails Application
 
-The Rails app is a standard Rails 3 application. Just `bundle install`, `rake db:schema:laod`, and `rails server` and you should be up and running.
+The Rails app is a standard Rails 3 application. Once you've set up your `config/database.yml` file, a `bundle install`, `rake db:schema:laod`, and `rails server` and you should be up and running.
 
 ### The Faye Server
 
