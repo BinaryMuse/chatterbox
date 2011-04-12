@@ -15,45 +15,15 @@ class Room < ActiveRecord::Base
   end
 
   def log_message(user, message)
-    begin
-      MongoChat.chat_logs.insert({
-        "user_id" => user.id, "username" => user.username || user.email,
-        "room_sha1" => sha1, "message" => message
-      })
-    rescue Mongo::ConnectionFailure
-      MongoChat.reconnect
-      retry
-    end
+    MongoChat.log_chat(user.id, user.display_name, sha1, message)
   end
 
   def log_event(user, event)
-    begin
-      MongoChat.chat_logs.insert({
-        "user_id" => user.id, "username" => user.username || user.email,
-        "room_sha1" => sha1, "event" => event.to_s
-      })
-    rescue Mongo::ConnectionFailure
-      MongoChat.reconnect
-      retry
-    end
+    MongoChat.log_event(user.id, user.display_name, sha1, event.to_s)
   end
 
   def recent_chats
-    begin
-      chats = []
-      MongoChat.chat_logs.find("room_sha1" => sha1).sort('$natural', -1).limit(15).each do |row|
-        chats << {
-          :user_id  => row["user_id"],
-          :username => row["username"],
-          :message  => row["message"] || nil,
-          :event    => row["event"] || nil
-        }
-      end
-    rescue Mongo::ConnectionFailure
-      MongoChat.reconnect
-      retry
-    end
-    chats.reverse
+    MongoChat.recent_chats(sha1)
   end
 
   private
