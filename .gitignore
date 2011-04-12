@@ -5,4 +5,4 @@ tmp/
 vendor/ruby/*
 config/initializers/0_development.rb
 config/private_pub.yml
-config/databasae.yml
+config/database.yml
