@@ -31,10 +31,6 @@
 
 <script type="text/javascript">
   $(window).bind('beforeunload', function() {
-    $.ajax({
-      url: "/rooms/<%= @room.sha1 %>/parted",
-      async: false,
-      type: "POST"
-    });
+    return "Are you sure you wish to leave this page?"
   });
 </script>

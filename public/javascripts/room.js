@@ -53,4 +53,12 @@ $(function(){
   $(window).bind("focus", function() {
     Chatterbox.set_focused(true);
   });
+
+  $(window).unload(function(){
+    $.ajax({
+      url: "/rooms/" + room_sha1 + "/parted",
+      async: false,
+      type: "POST"
+    });
+  });
 });
